@@ -1,0 +1,25 @@
+
+<html>
+    <head>
+    <script>
+        window.onload = function() {
+            const strip = (text) =>{
+                return (new DOMParser()?.parseFromString(text,"text/html"))
+                ?.body?.textContent
+            }
+
+            document.getElementById("go").addEventListener("click", function(){
+                const value = document.getElementById("text").value;
+                let cleanText = strip(value);
+                cleanText = cleanText.replace(/Azure DevEx\\/g, "");
+                document.getElementById("text").value = cleanText;
+            });
+        }
+    </script>
+    </head>
+    <body>
+        <textarea id="text" rows="30" cols="80"></textarea>
+        <button id="go">Remove HTML tags</button>
+    </body>
+</html>
+
